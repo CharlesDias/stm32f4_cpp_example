@@ -1,0 +1,16 @@
+set(BOARD_HEADER_FOLDER_PATH "${CMAKE_SOURCE_DIR}/src/stm32-cube-ide/Inc/")
+
+set(DRIVERS_SOURCES_FILES
+   "Src/gpio.cpp"
+)
+
+add_library(${DRIVERS_LIBRARY_TARGET} STATIC
+   ${DRIVERS_SOURCES_FILES}
+)
+
+target_include_directories( ${DRIVERS_LIBRARY_TARGET} PUBLIC
+   "../../Libraries/"
+   PRIVATE
+   ${STM32_CUBE_INCLUDE_FILES}
+   ${BOARD_HEADER_FOLDER_PATH}
+)
