@@ -22,6 +22,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "app_main.h"
+#include "board.h"
 
 /* USER CODE END Includes */
 
