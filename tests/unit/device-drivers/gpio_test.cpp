@@ -6,6 +6,9 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 
+// anonymous namespaces
+namespace {
+
 TEST(GpioUnitTest, GPIO_Initialize_should_initialize_struct_field)
 {
    // Expect to br true
@@ -14,3 +17,5 @@ TEST(GpioUnitTest, GPIO_Initialize_should_initialize_struct_field)
    // Expect to br false
    EXPECT_FALSE(0);
 }
+
+} // namespace

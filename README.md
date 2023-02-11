@@ -17,3 +17,34 @@ Development of a project model using the STM32F446ZE microcontroller programmed 
 * Code quality analysis with Lizard and Flawfinder tools.
 * Assert verification and prints the failures via huart3.
 * Use of Docker container.
+
+## Running the tests
+
+**Step 1**
+Clone the project for your local machine.
+
+```console
+git clone https://github.com/CharlesDias/stm32f4_cpp_project.git
+```
+
+**Step 2**
+Access the project folder **stm32f4_cpp_project**.
+
+```console
+cd  stm32f4_cpp_project
+```
+
+**Step 3.**
+Run the image docker.
+
+```console
+docker run --rm -it -v $(pwd):/home/project -w /home/project charlesdias/stm32f4_build
+```
+
+**Step 4.**
+Run the make command to build and run the tests.
+
+```console
+make test
+```
+
