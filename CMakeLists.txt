@@ -23,18 +23,6 @@ set(CMAKE_CXX_EXTENSIONS OFF)                   # Disabling vendor-specific exte
 # This is necessary for Sonarlint tools
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-message(STATUS "EXTERNAL: Clone Google Test Framework from Git repository...")
-include(FetchContent)
-FetchContent_Declare(
-   googletest
-   GIT_REPOSITORY https://github.com/google/googletest.git
-   GIT_TAG v1.13.0
-)
-
-# For Windows: Prevent overriding the parent project's compiler/linker settings
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-FetchContent_MakeAvailable(googletest)
-
 # Select the right project to build
 set(CHOOSE_TARGET_PLATFORM_BOARD board)
 set(CHOOSE_TARGET_PLATFORM_TEST  test)
@@ -47,13 +35,13 @@ if (NOT (CHOOSE_TARGET_PLATFORM STREQUAL ${CHOOSE_TARGET_PLATFORM_BOARD} OR CHOO
          )
 endif()
 
-# It must to be declare before the test folder
-enable_testing()
-
 # Variables name for target
 set(LIBRARY_NAME library_gpio)
 set(DRIVERS_LIBRARY_TARGET drivers_library)
 set(MIDDLEWARE_LIBRARY_TARGET middleware_library)
+
+# It must to be declare before the test folder
+enable_testing()
 
 if(CHOOSE_TARGET_PLATFORM STREQUAL ${CHOOSE_TARGET_PLATFORM_TEST})
    add_subdirectory(tests)
