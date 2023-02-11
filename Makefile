@@ -9,12 +9,6 @@ board: clean
 	@echo "Done!"
 	@echo "----------------------------------------------------------"
 
-build:
-	@echo "-------------------- Configure and Build CMake -----------"
-	cmake -S . -B build
-	cmake --build build -- -j4
-	@echo ""
-
 test: clean
 	@echo "----- Build for test  ------------------------------------"
 	cmake -DCHOOSE_TARGET_PLATFORM=test -S . -B ./build
@@ -33,4 +27,4 @@ clean:
 ###############################################
 # Phony
 # 
-.PHONY: all build board test clean
+.PHONY: all board test clean
