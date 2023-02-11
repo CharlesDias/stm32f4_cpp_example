@@ -2,19 +2,29 @@ all: build
 	@echo ""
 	@echo "Done!"
 
-build:
-	@echo "-------------------- Configure and Build CMake -----------"
-	cmake -S . -B build
+board: clean
+	@echo "----- Building for target board --------------------------"
+	cmake -DCHOOSE_TARGET_PLATFORM=board -DCMAKE_TOOLCHAIN_FILE=../cmake/arm-none-eabi-gcc.cmake -DCMAKE_BUILD_TYPE=Debug -S . -B ./build
 	cmake --build build -- -j4
-	@echo ""
+	@echo "Done!"
+	@echo "----------------------------------------------------------"
 
-test: build
-	@echo "-------------------- Run CTest ---------------------------"
+test: clean
+	@echo "----- Build for test  ------------------------------------"
+	cmake -DCHOOSE_TARGET_PLATFORM=test -S . -B ./build
+	cmake --build build -- -j4
 	cd build && pwd && ctest --verbose
-	@echo ""
+	@echo "Done!"
+	@echo "----------------------------------------------------------"
 
 clean:
 	@echo ""
 	@echo "-------------------- Clean build folder ------------------"
 	rm -rf build
-	@echo ""
+	@echo "Done!"
+	@echo "----------------------------------------------------------"
+
+###############################################
+# Phony
+# 
+.PHONY: all board test clean

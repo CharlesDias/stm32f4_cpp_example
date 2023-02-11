@@ -1,0 +1,22 @@
+name: Build
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: charlesdias/stm32f4_build:latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Building for target board
+      run: make board
+
+    # - uses: actions/upload-artifact@v3
+    #   with:
+    #     name: Archive production artifacts
+    #     path: ./install-files/
+    #     retention-days: 30
+      

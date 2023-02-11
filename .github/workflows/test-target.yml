@@ -1,0 +1,21 @@
+name: Test
+
+on: [push]
+
+jobs:
+  units-test:
+    runs-on: ubuntu-latest
+    container:
+      image: charlesdias/stm32f4_build:latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Build and run the tests
+      run: make test
+
+    # - uses: actions/upload-artifact@v3
+    #   with:
+    #     name: Archive production artifacts
+    #     path: ./install-files/gtest-reports/
+    #     retention-days: 90
