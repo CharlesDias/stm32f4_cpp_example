@@ -1,6 +1,9 @@
 
 BuildArtifacts/
 
+# Docker
+docker/tools/
+
 ### Eclipse ###
 Debug/
 Release/
